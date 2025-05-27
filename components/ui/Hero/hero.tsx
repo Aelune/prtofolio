@@ -65,7 +65,9 @@ export default function Hero() {
         </div>
       </div>
     </div>
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70"></div>
     </motion.div>
+
     </div>
   );
 }
