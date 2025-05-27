@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import MysticalCard from './mysticalCard';
-import ComicCardGrid from './comicCArd';
+import MobileProjectsSection from './comicCArd';
 
 const cards = [
   {
@@ -86,9 +86,20 @@ const Work = () => {
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
+          <div className="text-center m-6">
+    <h2 className="text-4xl font-hand bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+      FEATURED PROJECTS
+    </h2>
+    {/* <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
+    <p className="text-slate-300 text-sm max-w-sm mx-auto leading-relaxed">
+      Innovative solutions pushing the boundaries of technology
+    </p> */}
+  </div>
       <div className="relative z-20">
+
         {/* DESKTOP */}
         <div className="hidden md:block w-full h-screen">
+
           <div
             className="absolute w-[200px] h-[300px] top-[10%] left-1/2 -translate-x-1/2 animate-rotate3d z-30 [transform-style:preserve-3d] [transform:perspective(1000px)]"
             style={{ '--quantity': String(cards.length) } as React.CSSProperties}
@@ -120,8 +131,8 @@ const Work = () => {
 
         {/* MOBILE */}
         <div className="md:hidden flex justify-center items-center h-screen bg-opacity-95 relative">
-          <ComicCardGrid />
-        </div>
+<MobileProjectsSection projects={cards} />
+       </div>
       </div>
     </div>
   );

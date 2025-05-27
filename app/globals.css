@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
 
 @import "tailwindcss";
 
@@ -32,7 +32,8 @@
     --font-roboto: "Roboto", sans-serif;
     --font-inukit:  "Inknut Antiqua", "serif";
     --font-jacques:  "Jacques Francois", "serif";
-    --font-jacques:  "Gloock", "serif";
+    --font-WDXL:  "WDXL Lubrifont TC", "sans-serif";
+    --font-Gloock:  "Gloock", "serif";
     --font-playwrite:  "Playwrite HU", "cursive";
     --font-hand:  "Just Another Hand", "cursive";
     --breakpoint-xs: 20rem;   /* 320px */

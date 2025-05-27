@@ -118,12 +118,12 @@ export default function AboutSection({
 
           {/* Drop Cap Paragraph - Updated colors */}
           <motion.div variants={textVariants}>
-            <span className="float-left text-4xl leading-none text-white/60 mr-2 mt-1 font-gloock drop-shadow-sm
+            <span className="float-left text-4xl leading-none font-inukit text-white/60 mr-2 mt-1 font-gloock drop-shadow-sm
                              xs:text-5xl xs:mr-3
                              sm:text-6xl">
               {description.charAt(0)}
             </span>
-            <p className="text-gray-100 text-sm leading-relaxed font-light font-gloock
+            <p className="text-gray-100 text-sm leading-relaxed font-light font-WDXL
                           xs:text-base xs:leading-relaxed
                           sm:text-base
                           md:text-lg">
@@ -139,7 +139,7 @@ export default function AboutSection({
               <motion.span
                 key={tag}
                 variants={tagVariants(i)}
-                className="text-xs px-3 py-2 font-playwrite rounded-full text-[#fb7185] bg-gradient-to-r from-[#fb7185]/20 to-white/10 border border-[#caa56e]/30 hover:from-[#fb7185]/30 hover:to-white/20 hover:scale-105 hover:shadow-lg hover:hover:shadow-[#fb7185]/20 transition-all duration-300 backdrop-blur-sm
+                className="text-xs px-3 py-2 font-Gloock rounded-full text-[#fb7185] bg-gradient-to-r from-[#fb7185]/20 to-white/10 border border-[#caa56e]/30 hover:from-[#fb7185]/30 hover:to-white/20 hover:scale-105 hover:shadow-lg hover:hover:shadow-[#fb7185]/20 transition-all duration-300 backdrop-blur-sm
                            xs:text-sm xs:px-4
                            sm:px-4 sm:py-2"
               >

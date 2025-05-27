@@ -72,7 +72,7 @@ const Contact = () => {
             </span>
           </h2>
           <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-[#caa56e] to-transparent mx-auto mb-6 sm:mb-8 rounded-full shadow-lg shadow-[#caa56e]/50" />
-          <p className="text-base font-playwrite sm:text-lg md:text-lg text-gray-300 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base font-WDXL sm:text-lg md:text-lg text-gray-300 max-w-xl mx-auto leading-relaxed">
             Ready to collaborate on something <span className="text-[#caa56e] font-semibold">extraordinary</span>? Let&apos;s build the future together.
           </p>
         </motion.div>
@@ -124,7 +124,7 @@ const Contact = () => {
                       <h3 className="text-sm sm:text-base font-semibold font-gloock text-[#caa56e] mb-1 group-hover:text-yellow-400 transition-colors">
                         {contact.description}
                       </h3>
-                      <p className="text-sm sm:text-lg font-medium text-white font-jacques group-hover:text-gray-100 transition-colors break-all">
+                      <p className="text-sm sm:text-lg font-medium text-white font-roboto group-hover:text-gray-100 transition-colors break-all">
                         {contact.label}
                       </p>
                     </div>
@@ -132,7 +132,7 @@ const Contact = () => {
                     {/* <div className="text-[#caa56e] group-hover:text-yellow-400 group-hover:translate-x-2 transition-all duration-300">
                       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      </svg>f
                     </div> */}
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const Contact = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className="text-sm sm:text-base italic font-playwrite text-gray-400 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base italic font-WDXL text-gray-400 max-w-xl mx-auto">
             &quot;Great things are never done by one person.
             <span className="text-[#caa56e]"> They&apos;re done by a team of people.</span>&quot;
           </p>
