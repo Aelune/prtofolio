@@ -1,16 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* import '@fontsource/cinzel/700.css'; */
+
+
+
+/* @font-face {
+    font-family: Migra;
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url("/fonts/Migra/Migra-Extrabold.woff2") format("woff2");}
+
+
+@font-face {
+  font-family: 'Trusek';
+  src: url('/fonts/TuskerGrotesk-3500Medium.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+
+@theme {
+    --font-roboto: "Roboto", sans-serif;
+    --font-inukit:  "Inknut Antiqua", "serif";
+    --font-jacques:  "Jacques Francois", "serif";
+    --breakpoint-xs: 20rem;   /* 320px */
+    --breakpoint-sm: 30rem;   /* 480px */
+    --breakpoint-md: 48rem;   /* 768px */
+    --breakpoint-lg: 61rem;   /* 976px */
+    --breakpoint-xl: 80rem;   /* 1280px */
+    --breakpoint-2xl: 100rem; /* 1600px */
+    --breakpoint-3xl: 120rem; /* 1920px */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* @theme {
+    --font-inukit": "Inknut Antiqua", "serif";
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,4 +53,117 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.before-blur::before {
+  content: "";
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle at center, rgba(255, 0, 255, 0.2), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  z-index: -1;
+}
+.bg-renaissance {
+  background: linear-gradient(to bottom right, #4b3c2b, #2e241b), url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-blend-mode: overlay;
+  background-repeat: repeat;
+  background-size: contain;
+}
+.bg-renaissance-dark {
+  background: url('https://www.transparenttextures.com/patterns/arabesque.png'), linear-gradient(to bottom, #1a120b, #33271b);
+  background-blend-mode: multiply;
+  background-size: auto, cover;
+  background-repeat: repeat;
+}
+
+/* Custom rotate3d animation */
+@layer utilities {
+  @keyframes rotate3d {
+    from {
+      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to {
+      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+  }
+
+  .animate-rotate3d {
+    animation: rotate3d 20s linear infinite;
+  }
+
+  .animate-rotate3d:hover {
+  animation-play-state: paused;
+}
+
+  .text-shadow {
+    text-shadow: 0 10px 20px #000;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-leftToRight {
+  animation: scrollLeftToRight 15s linear infinite;
+}
+
+.animate-rightToLeft {
+  animation: scrollRightToLeft 15s linear infinite;
 }
