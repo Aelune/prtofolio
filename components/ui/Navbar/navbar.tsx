@@ -3,16 +3,15 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import clsx from 'clsx';
 
 const navItems = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Blogs', href: '#blogs' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Videos', href: '#videos' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Projects', href: '#experience' },
+//   { label: 'Experience', href: '#experience' },
+//   { label: 'Blogs', href: '#blogs' },
+//   { label: 'Videos', href: '#videos' },
 ];
 
 export default function Navbar() {

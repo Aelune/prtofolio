@@ -1,68 +1,79 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const projects = [
+const card = [
   {
     id: 1,
-    title: 'Neural Network Visualizer',
-    description: 'Interactive 3D visualization of deep learning architectures.',
-    tech: ['Three.js', 'TensorFlow.js', 'React'],
-    color: 'from-purple-600 via-pink-600 to-red-500',
-    icon: '🧠',
+    title: 'KlipB',
+    description: 'A simple clipboard for Linux',
+    tech: ['C++', 'Wayland'],
+    color: 'from-gray-700 via-gray-500 to-gray-400',
+    icon: '📋',
     status: 'Live'
   },
   {
     id: 2,
-    title: 'Quantum Computing Simulator',
-    description: 'Browser-based quantum circuit simulator with drag-and-drop.',
-    tech: ['TypeScript', 'Canvas API', 'WebAssembly'],
-    color: 'from-blue-600 via-cyan-500 to-teal-400',
-    icon: '⚛️',
+    title: 'HalalDroid',
+    description: 'Blocks all NSFW content from user device',
+    tech: ['Kotlin', 'Tensorflow'],
+    color: 'from-green-600 via-lime-500 to-yellow-400',
+    icon: '🛡️',
     status: 'Beta'
   },
   {
     id: 3,
-    title: 'AI-Powered Code Review',
-    description: 'ML system that analyzes code quality and security.',
-    tech: ['Python', 'OpenAI', 'FastAPI'],
-    color: 'from-emerald-500 via-green-500 to-lime-400',
-    icon: '🔍',
+    title: 'L-Edger',
+    description: 'A simple link managing app for Android',
+    tech: ['Flutter'],
+    color: 'from-blue-500 via-cyan-500 to-teal-400',
+    icon: '🔗',
     status: 'Live'
   },
   {
     id: 4,
-    title: 'Blockchain Analytics',
-    description: 'Real-time crypto transaction analysis with fraud detection.',
-    tech: ['Solidity', 'Web3.js', 'Node.js'],
-    color: 'from-orange-500 via-amber-500 to-yellow-400',
-    icon: '₿',
+    title: 'dough',
+    description: 'A C library for UI.',
+    tech: ['C'],
+    color: 'from-orange-600 via-red-500 to-pink-500',
+    icon: '🍞',
     status: 'Live'
   },
   {
     id: 5,
-    title: 'Holographic UI Framework',
-    description: 'Next-gen UI framework with spatial computing capabilities.',
-    tech: ['WebXR', 'A-Frame', 'MediaPipe'],
-    color: 'from-violet-600 via-purple-600 to-indigo-500',
-    icon: '🌐',
-    status: 'Coming Soon'
+    title: 'Kondo',
+    description: 'File organizing tool',
+    tech: ['Rust'],
+    color: 'from-red-700 via-rose-600 to-pink-500',
+    icon: '🗂️',
+    status: 'Live'
   },
   {
     id: 6,
-    title: 'Autonomous Drone Network',
-    description: 'Distributed system for coordinating autonomous drones.',
-    tech: ['ROS', 'Python', 'Computer Vision'],
-    color: 'from-rose-500 via-pink-500 to-purple-500',
-    icon: '🚁',
-    status: 'Research'
-  }
+    title: 'Portfolio',
+    description: 'Designed and created a manga-styled portfolio',
+    tech: ['Tailwind', 'Next.js'],
+    color: 'from-purple-600 via-pink-600 to-red-500',
+    icon: '🎨',
+    status: 'Live'
+  },
 ];
 
+
+type Star = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  twinkleDelay: number;
+};
+
+
 export default function MobileProjectsSection() {
-  const trackRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [stars, setStars] = useState([]);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const animationRef = useRef(null);
+const trackRef = useRef<HTMLDivElement | null>(null);
+const [isPaused, setIsPaused] = useState(false);
+const [, setStars] = useState<Star[]>([]);
+const [scrollPosition, setScrollPosition] = useState<number>(0);
+const animationRef = useRef<number | null>(null);
 
   // Generate stars for background
   useEffect(() => {
@@ -89,7 +100,7 @@ export default function MobileProjectsSection() {
     if (!track) return;
 
     const cardWidth = 280; // Width of each card + margin
-    const totalWidth = cardWidth * projects.length;
+    const totalWidth = cardWidth * card.length;
 
     const animate = () => {
       if (!isPaused) {
@@ -125,15 +136,16 @@ export default function MobileProjectsSection() {
     setIsPaused(false);
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Live': return 'bg-green-500';
-      case 'Beta': return 'bg-yellow-500';
-      case 'Coming Soon': return 'bg-blue-500';
-      case 'Research': return 'bg-purple-500';
-      default: return 'bg-gray-500';
-    }
-  };
+const getStatusColor = (status: string): string => {
+  switch (status) {
+    case 'Live': return 'bg-green-500';
+    case 'Beta': return 'bg-yellow-500';
+    case 'Coming Soon': return 'bg-blue-500';
+    case 'Research': return 'bg-purple-500';
+    default: return 'bg-gray-500';
+  }
+};
+
 
   return (
     <section className="relative min-h-screen  overflow-hidden py-12 px-4">
@@ -192,7 +204,7 @@ export default function MobileProjectsSection() {
           {/* Scrolling Track */}
           <div
             ref={trackRef}
-            className="flex transition-transform duration-75 ease-linear"
+            className="flex transition-transform duration-75 ease-linear h-[450px]"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onMouseDown={handleTouchStart}
@@ -201,10 +213,10 @@ export default function MobileProjectsSection() {
             style={{ willChange: 'transform' }}
           >
             {/* Render projects twice for seamless loop */}
-            {[...projects, ...projects].map((project, index) => (
+            {[...card, ...card].map((project, index) => (
               <div
                 key={`${project.id}-${index}`}
-                className="flex-shrink-0 w-64 mx-2 border-white/40 bg-white/30 backdrop-blur-xl border rounded-2xl p-6 transition-all duration-300 hover:bg-slate-800/80 hover:border-slate-600/50 hover:scale-105"
+                className="mt-2 flex-shrink-0 w-64 mx-2 border-white/40 bg-white/10 backdrop-blur-xl border rounded-2xl p-6 transition-all duration-300 hover:scale-102 h-[400px]"
                 style={{
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                 }}
@@ -268,7 +280,11 @@ export default function MobileProjectsSection() {
        <div className="text-center mt-4">
   <button
     className="cursor text-white px-8 py-4 rounded-xl font-bold text-sm transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30"
-    onClick={() => window.open('https://github.com/dwukn', '_blank')}
+onClick={() => {
+  if (typeof window !== 'undefined') {
+    window.open('https://github.com/dwukn', '_blank');
+  }
+}}
   >
     View All Projects
   </button>

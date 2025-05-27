@@ -1,9 +1,21 @@
 'use client';
-import { motion } from 'framer-motion';
+import { useScroll, useTransform, motion } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function Hero() {
+    const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
   return (
-    <div className="w-full h-screen bg-[url('/Images/herobg-hd.webp')] bg-cover bg-center">
+    <div>
+            <motion.div
+      ref={ref}
+      style={{ opacity }}
+      className="w-full h-screen bg-[url('/Images/herobg-hd.webp')] bg-cover bg-center"
+    >
+    {/* <div className="w-full h-screen bg-[url('/Images/herobg-hd.webp')] bg-cover bg-center"> */}
+    <div className="w-full h-screen bg-[url('/Images/clouds.jpg')] bg-cover bg-center">
       <div className="flex flex-col md:flex-row items-center justify-center h-full text-center md:text-left max-w-7xl mx-auto gap-10 md:gap-20 px-4">
         {/* Left Side: Title */}
         <motion.div
@@ -52,6 +64,8 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+    </div>
+    </motion.div>
     </div>
   );
 }

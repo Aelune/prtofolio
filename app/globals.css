@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 
 
 @import "tailwindcss";
@@ -29,6 +32,9 @@
     --font-roboto: "Roboto", sans-serif;
     --font-inukit:  "Inknut Antiqua", "serif";
     --font-jacques:  "Jacques Francois", "serif";
+    --font-jacques:  "Gloock", "serif";
+    --font-playwrite:  "Playwrite HU", "cursive";
+    --font-hand:  "Just Another Hand", "cursive";
     --breakpoint-xs: 20rem;   /* 320px */
     --breakpoint-sm: 30rem;   /* 480px */
     --breakpoint-md: 48rem;   /* 768px */
