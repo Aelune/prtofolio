@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import MysticalCard from './mysticalCard';
-import MobileProjectsSection from './comicCArd';
+// import MobileProjectsSection from './comicCArd';
 
 const cards = [
   {
@@ -11,7 +11,7 @@ const cards = [
     color: 'from-gray-700 via-gray-500 to-gray-400',
     icon: '📋',
     status: 'Live',
-    link: "https://example.com/project-two"
+    link: "https://github.com/Dwukn/KlipB"
 
   },
   {
@@ -21,7 +21,8 @@ const cards = [
     tech: ['Kotlin', 'Tensorflow'],
     color: 'from-green-600 via-lime-500 to-yellow-400',
     icon: '🛡️',
-    status: 'Beta'
+    status: 'Beta',
+    link: 'https://github.com/Dwukn/HalalDroid'
   },
   {
     id: 3,
@@ -30,7 +31,9 @@ const cards = [
     tech: ['Flutter'],
     color: 'from-blue-500 via-cyan-500 to-teal-400',
     icon: '🔗',
-    status: 'Live'
+    status: 'Live',
+    link: 'https://github.com/Dwukn/l-edger'
+
   },
   {
     id: 4,
@@ -39,7 +42,8 @@ const cards = [
     tech: ['C'],
     color: 'from-orange-600 via-red-500 to-pink-500',
     icon: '🍞',
-    status: 'Live'
+    status: 'Coming Soon',
+    link: 'https://github.com/Dwukn'
   },
   {
     id: 5,
@@ -48,16 +52,18 @@ const cards = [
     tech: ['Rust'],
     color: 'from-red-700 via-rose-600 to-pink-500',
     icon: '🗂️',
-    status: 'Live'
+    status: 'Live',
+    link: 'https://github.com/Dwukn/kondo'
   },
   {
     id: 6,
     title: 'Portfolio',
-    description: 'Designed and created a manga-styled portfolio',
+    description: 'A manga-styled portfolio',
     tech: ['Tailwind', 'Next.js'],
     color: 'from-purple-600 via-pink-600 to-red-500',
     icon: '🎨',
-    status: 'Live'
+    status: 'Coming Soon',
+    link: 'https://github.com/skfareeduddin'
   },
 ];
 
@@ -136,21 +142,12 @@ const Work = () => {
 {/* <MobileProjectsSection projects={cards} /> */}
 <div
   className="relative w-full overflow-hidden whitespace-nowrap z-30 md:hidden flex justify-center items-center bg-opacity-95"
-  style={{ '--quantity': String(cards.length) } as React.CSSProperties}
 >
-  <div className="inline-flex animate-marquee space-x-4">
-    {cards.map((card, index) => (
+  <div className="inline-flex animate-marquee space-x-4 min-w-max">
+    {/* Duplicate the card list twice to allow infinite scroll */}
+    {[...cards, ...cards].map((card, index) => (
       <div
         key={index}
-        className="w-[200px] h-[450px] flex-shrink-0"
-      >
-        <MysticalCard project={card} />
-      </div>
-    ))}
-    {/* Optional: Repeat cards to create infinite loop effect */}
-    {cards.map((card, index) => (
-      <div
-        key={`duplicate-${index}`}
         className="w-[200px] h-[450px] flex-shrink-0"
       >
         <MysticalCard project={card} />
