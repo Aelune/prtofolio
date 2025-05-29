@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Gloock';
+  src: url('/Fonts/Gloock/Gloock-Regular.ttf') format('true');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jacques Francoise';
+  src: url('/Fonts/Jacques_Francois/Jacques_Francois.tff') format('true');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Repeat for all your fonts */

@@ -10,7 +10,9 @@ const cards = [
     tech: ['C++', 'Wayland'],
     color: 'from-gray-700 via-gray-500 to-gray-400',
     icon: '📋',
-    status: 'Live'
+    status: 'Live',
+    link: "https://example.com/project-two"
+
   },
   {
     id: 2,
@@ -82,7 +84,7 @@ const Work = () => {
   return (
     <div
       ref={sectionRef}
-      className={`relative w-full min-h-screen overflow-hidden text-center transition-all duration-1000 ease-out transform ${
+      className={`relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen overflow-hidden text-center transition-all duration-1000 ease-out transform ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
@@ -130,12 +132,37 @@ const Work = () => {
         </div>
 
         {/* MOBILE */}
-        <div className="md:hidden flex justify-center items-center h-screen bg-opacity-95 relative">
-<MobileProjectsSection projects={cards} />
+        <div>
+{/* <MobileProjectsSection projects={cards} /> */}
+<div
+  className="relative w-full overflow-hidden whitespace-nowrap z-30 md:hidden flex justify-center items-center bg-opacity-95"
+  style={{ '--quantity': String(cards.length) } as React.CSSProperties}
+>
+  <div className="inline-flex animate-marquee space-x-4">
+    {cards.map((card, index) => (
+      <div
+        key={index}
+        className="w-[200px] h-[450px] flex-shrink-0"
+      >
+        <MysticalCard project={card} />
+      </div>
+    ))}
+    {/* Optional: Repeat cards to create infinite loop effect */}
+    {cards.map((card, index) => (
+      <div
+        key={`duplicate-${index}`}
+        className="w-[200px] h-[450px] flex-shrink-0"
+      >
+        <MysticalCard project={card} />
+      </div>
+    ))}
+  </div>
+</div>
+
        </div>
 
       </div>
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70"></div>
+            {/* <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70"></div> */}
 
     </div>
   );

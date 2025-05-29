@@ -8,30 +8,59 @@
 
 @import "tailwindcss";
 
-/* import '@fontsource/cinzel/700.css'; */
-
-
-
 /* @font-face {
-    font-family: Migra;
+  font-family: 'Jacques Francois';
+  src: url('/Fonts/Jacques_Francois/JacquesFrancois-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  src: url('/Fonts/Inknut_Antiqua/InknutAntiqua-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('/Fonts/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'WDXL';
+    src: url('/Fonts/WDXL_Lubrifont_TC/WDXLLubrifontTC-Regular.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
-    font-weight: 200 700;
-    font-display: swap;
-    src: url("/fonts/Migra/Migra-Extrabold.woff2") format("woff2");}
-
+}
+@font-face {
+  font-family: 'Gloock';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/gloock/v6/Iurb6YFw84WUY4NJhRakNrc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
 
 @font-face {
-  font-family: 'Trusek';
-  src: url('/fonts/TuskerGrotesk-3500Medium.woff2') format('woff');
+  font-family: 'playwrite';
+  src: url('/Fonts/Playwrite_HU/PlaywriteHU-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'hand';
+  src: url('/Fonts/Just_Another_Hand/JustAnotherHand-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 } */
 
 
+
+
 @theme {
-    --font-roboto: "Roboto", sans-serif;
-    --font-inukit:  "Inknut Antiqua", "serif";
     --font-jacques:  "Jacques Francois", "serif";
+    --font-inukit:  "Inknut Antiqua", "serif";
+    --font-roboto: "Roboto", sans-serif;
     --font-WDXL:  "WDXL Lubrifont TC", "sans-serif";
     --font-Gloock:  "Gloock", "serif";
     --font-playwrite:  "Playwrite HU", "cursive";
