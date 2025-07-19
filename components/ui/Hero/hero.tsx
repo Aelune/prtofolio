@@ -1,12 +1,29 @@
 'use client';
-import { useScroll, useTransform, motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useScroll,
+    useTransform,
+    useMotionValueEvent,
+    motion
+} from 'framer-motion';
+import { useRef, useState } from 'react';
+import FuzzyText from "@/components/Text/fuzzy";
 
 export default function Hero() {
     const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+      // Animate from 0.5 to 0.15 based on scroll
+  const intensityMotion = useTransform(scrollYProgress, [0, 1], [0.5, 0.15]);
+  const [baseIntensity, setBaseIntensity] = useState(0.5);
 
+  useMotionValueEvent(intensityMotion, 'change', (latest) => {
+    setBaseIntensity(latest);
+  });
+
+  const hoverIntensity = 0.2;
+  const enableHover = true;
   return (
     <div>
             <motion.div
@@ -18,16 +35,28 @@ export default function Hero() {
     <div className="w-full h-screen bg-[url('/Images/clouds.jpg')] bg-cover bg-center">
       <div className="flex flex-col md:flex-row items-center justify-center h-full text-center md:text-left max-w-7xl mx-auto gap-10 md:gap-20 px-4">
         {/* Left Side: Title */}
+
         <motion.div
-          className="w-full md:w-1/2 mt-24 xs:mt-32 md:mt-0 flex items-center justify-center text-center md:text-left"
+          className="w-full ml-11 md:w-1/2 mt-24 xs:mt-32 md:mt-0 flex flex-col items-center justify-center text-center md:text-left"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h1 className="font-inukit text-4xl sm:text-5xl md:text-5xl lg:text-7xl xl:text-8xl leading-tight">
-            DESIGNER<span className="align-top text-base md:text-lg">&</span><br />
-            DEVELOPER
-          </h1>
+
+ <div className="font-inukit text-4xl sm:text-5xl md:text-5xl lg:text-7xl xl:text-6xl leading-tight text-white">
+          <FuzzyText
+            baseIntensity={baseIntensity}
+            hoverIntensity={hoverIntensity}
+            enableHover={enableHover}
+          >
+            DESIGNER
+          </FuzzyText>
+        </div>
+          {/* <span className="align-top text-base md:text-lg">&</span><br /> */}
+ <div className="font-inukit text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-white">
+          DEVELOPER
+          </div>
+
         </motion.div>
 
         {/* Right Side: Description + Button */}
@@ -65,7 +94,7 @@ export default function Hero() {
         </div>
       </div>
     </div>
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70">hi</div>
     </motion.div>
 
     </div>
