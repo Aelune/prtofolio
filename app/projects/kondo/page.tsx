@@ -5,31 +5,31 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FileText, FolderOpen, Sparkles, Download, Github, Star, ArrowRight, Check, Zap, Shield, Heart, Terminal, Code2, Move3D, Layers3 } from 'lucide-react';
+import { Sparkles, Download, Github, Star, ArrowRight, Heart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 const KondoLanding = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(0);
+//   const [activeFeature, setActiveFeature] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+//   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
 
-    const handleMouseMove = (e: any) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    const testimonialInterval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % 3);
-    }, 4000);
+    // const testimonialInterval = setInterval(() => {
+    //   setCurrentTestimonial((prev) => (prev + 1) % 3);
+    // }, 4000);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      clearInterval(testimonialInterval);
+    //   clearInterval(testimonialInterval);
     };
   }, []);
 
@@ -48,49 +48,49 @@ const KondoLanding = () => {
     link.click();
     document.body.removeChild(link);
   };
-  const features = [
-    {
-      icon: <Terminal className="w-7 h-7" />,
-      title: "Command Line Power",
-      description: "Execute with a single command. No configuration needed, just instant organization.",
-      gradient: "from-orange-500 via-red-500 to-pink-500"
-    },
-    {
-      icon: <Layers3 className="w-7 h-7" />,
-      title: "Smart Grouping",
-      description: "Intelligently categorizes files by extension with custom handling for edge cases.",
-      gradient: "from-purple-500 via-blue-500 to-cyan-500"
-    },
-    {
-      icon: <Move3D className="w-7 h-7" />,
-      title: "Non-Destructive",
-      description: "Safely moves files without data loss. Your original files remain perfectly intact.",
-      gradient: "from-green-500 via-teal-500 to-emerald-500"
-    }
-  ];
+//   const features = [
+//     {
+//       icon: <Terminal className="w-7 h-7" />,
+//       title: "Command Line Power",
+//       description: "Execute with a single command. No configuration needed, just instant organization.",
+//       gradient: "from-orange-500 via-red-500 to-pink-500"
+//     },
+//     {
+//       icon: <Layers3 className="w-7 h-7" />,
+//       title: "Smart Grouping",
+//       description: "Intelligently categorizes files by extension with custom handling for edge cases.",
+//       gradient: "from-purple-500 via-blue-500 to-cyan-500"
+//     },
+//     {
+//       icon: <Move3D className="w-7 h-7" />,
+//       title: "Non-Destructive",
+//       description: "Safely moves files without data loss. Your original files remain perfectly intact.",
+//       gradient: "from-green-500 via-teal-500 to-emerald-500"
+//     }
+//   ];
 
-  const testimonials = [
-    { text: "Kondo saved me hours of manual file organization. It's like magic!", author: "Sarah Chen", role: "Frontend Developer" },
-    { text: "The cleanest file organization tool I've ever used. Simply brilliant.", author: "Marcus Rodriguez", role: "DevOps Engineer" },
-    { text: "Finally, a tool that thinks like I do about file organization.", author: "Zoe Kim", role: "UI/UX Designer" }
-  ];
+//   const testimonials = [
+//     { text: "Kondo saved me hours of manual file organization. It's like magic!", author: "Sarah Chen", role: "Frontend Developer" },
+//     { text: "The cleanest file organization tool I've ever used. Simply brilliant.", author: "Marcus Rodriguez", role: "DevOps Engineer" },
+//     { text: "Finally, a tool that thinks like I do about file organization.", author: "Zoe Kim", role: "UI/UX Designer" }
+//   ];
 
-const beforeFiles = [
-  { name: "vacation_photo.jpg", type: "image", size: "2.4MB" },
-  { name: "portrait.jpg", type: "image", size: "1.8MB" },
-  { name: "project_report.pdf", type: "pdf", size: "1.2MB" },
-  { name: "summary.pdf", type: "pdf", size: "800KB" },
-  { name: "meeting_notes.txt", type: "text", size: "4KB" },
-  { name: "todo_list.txt", type: "text", size: "3KB" },
-  { name: "README", type: "file", size: "8KB" }
-];
+// const beforeFiles = [
+//   { name: "vacation_photo.jpg", type: "image", size: "2.4MB" },
+//   { name: "portrait.jpg", type: "image", size: "1.8MB" },
+//   { name: "project_report.pdf", type: "pdf", size: "1.2MB" },
+//   { name: "summary.pdf", type: "pdf", size: "800KB" },
+//   { name: "meeting_notes.txt", type: "text", size: "4KB" },
+//   { name: "todo_list.txt", type: "text", size: "3KB" },
+//   { name: "README", type: "file", size: "8KB" }
+// ];
 
-const afterStructure = [
-  { folder: "jpg", files: ["vacation_photo.jpg", "portrait.jpg"], color: "bg-orange-500" },
-  { folder: "pdf", files: ["project_report.pdf", "summary.pdf"], color: "bg-red-500" },
-  { folder: "txt", files: ["meeting_notes.txt", "todo_list.txt"], color: "bg-green-500" },
-  { folder: "no_extension", files: ["README"], color: "bg-gray-500" }
-];
+// const afterStructure = [
+//   { folder: "jpg", files: ["vacation_photo.jpg", "portrait.jpg"], color: "bg-orange-500" },
+//   { folder: "pdf", files: ["project_report.pdf", "summary.pdf"], color: "bg-red-500" },
+//   { folder: "txt", files: ["meeting_notes.txt", "todo_list.txt"], color: "bg-green-500" },
+//   { folder: "no_extension", files: ["README"], color: "bg-gray-500" }
+// ];
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 relative overflow-x-hidden">
@@ -113,7 +113,7 @@ const afterStructure = [
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm border border-orange-500/30 text-orange-300 px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg shadow-orange-500/10">
               <Sparkles className="w-5 h-5 animate-spin" />
-              <span>Inspired by Marie Kondo's Philosophy</span>
+              <span>Inspired by Marie Kondo&aposs Philosophy</span>
               <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
             </div>
 
@@ -292,7 +292,7 @@ const afterStructure = [
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          {/* <div className="grid lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -321,12 +321,12 @@ const afterStructure = [
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32">
+      {/* <section className="py-32">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold text-slate-100 mb-16">Loved by Developers Worldwide</h2>
 
@@ -352,7 +352,7 @@ const afterStructure = [
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* About Section */}
       <section id="about" className="py-32">
@@ -369,7 +369,7 @@ const afterStructure = [
                   the organizational expert famous for the <em className="text-orange-300">KonMari</em> method.
                 </p>
                 <p>
-                  Just as Marie Kondo helps people declutter their physical spaces and "spark joy,"
+                  Just as Marie Kondo helps people declutter their physical spaces and &quotspark joy,&quot
                   our Kondo tool brings that same philosophy to your digital workspace, transforming
                   chaotic directories into organized, maintainable systems.
                 </p>

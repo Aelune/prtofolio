@@ -5,7 +5,7 @@ import { useScroll,
     motion
 } from 'framer-motion';
 import { useRef, useState } from 'react';
-import FuzzyText from "@/components/Text/fuzzy";
+import FuzzyText from "@/components/Text/FuzzyText";
 
 export default function Hero() {
     const ref = useRef(null);
