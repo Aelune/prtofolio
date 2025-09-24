@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/cinzel": "^5.2.5",
+    "@radix-ui/react-slot": "^1.2.3",
     "@react-three/drei": "^10.0.8",
     "@react-three/fiber": "^9.1.2",
     "class-variance-authority": "^0.7.1",
