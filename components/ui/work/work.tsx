@@ -5,79 +5,81 @@ import MysticalCard from './mysticalCard';
 const cards = [
   {
     id: 1,
-    title: 'KlipB',
-    description: 'A simple clipboard for Linux',
-    tech: ['C++', 'Wayland'],
-    color: 'from-gray-700 via-gray-500 to-gray-400',
-    icon: '📋',
+    title: 'Vanish',
+    description: 'Modern alternative to rm, with customizable TUI and restore feature',
+    tech: ['GoLang', 'TUI'],
+    color: 'from-red-700 via-rose-600 to-pink-500',
+    // icon: '🗑️',
+    icon:'globe.svg',
     status: 'Live',
-    link: "https://github.com/Dwukn/KlipB"
-
+    link: 'https://github.com/Aelune/vanish'
   },
   {
     id: 2,
-    title: 'HalalDroid',
-    description: 'Blocks all NSFW content from user device',
-    tech: ['Kotlin', 'Tensorflow'],
-    color: 'from-green-600 via-lime-500 to-yellow-400',
-    icon: '🛡️',
+    title: 'Venus',
+    description: 'Browser extension to change tab UI and have customizable quicklinks',
+    tech: ['JavaScript', 'WebExt'],
+    color: 'from-orange-600 via-amber-500 to-yellow-400',
+    // icon: '🪐',
+    icon:'globe.svg',
     status: 'Beta',
-    link: 'https://github.com/Dwukn/HalalDroid'
+    link: 'https://github.com/Dwukn/venus'
   },
   {
     id: 3,
-    title: 'L-Edger',
-    description: 'A simple link managing app for Android',
-    tech: ['Flutter'],
-    color: 'from-blue-500 via-cyan-500 to-teal-400',
-    icon: '🔗',
+    title: 'Hecate',
+    description: 'Hyprland dotfiles and collection of apps to improve user experience',
+    tech: ['Hyprland', 'Config'],
+    color: 'from-purple-700 via-indigo-600 to-blue-500',
+    // icon: '🌙',
+    icon:'globe.svg',
     status: 'Live',
-    link: 'https://github.com/Dwukn/l-edger'
-
+    link: 'https://github.com/Dwukn/hecate'
   },
   {
     id: 4,
-    title: 'dough',
-    description: 'A C library for UI.',
-    tech: ['C'],
-    color: 'from-orange-600 via-red-500 to-pink-500',
-    icon: '🍞',
-    status: 'Coming Soon',
-    link: 'https://github.com/Dwukn'
+    title: 'Janus',
+    description: 'Template creation tool for multiple types of projects',
+    tech: ['Rust', 'CLI'],
+    color: 'from-green-600 via-emerald-500 to-teal-400',
+    // icon: '⚡',
+    icon:'globe.svg',
+    status: 'Beta',
+    link: 'https://github.com/Dwukn/janus'
   },
   {
     id: 5,
-    title: 'Kondo',
-    description: 'File organizing tool',
-    tech: ['Rust'],
-    color: 'from-red-700 via-rose-600 to-pink-500',
-    icon: '🗂️',
-    status: 'Live',
-    link: 'https://github.com/Dwukn/kondo'
+    title: 'Athena',
+    description: 'Custom Linux kernel build for fun and learning',
+    tech: ['C', 'Kernel'],
+    color: 'from-blue-700 via-cyan-600 to-indigo-500',
+    // icon: '⚔️',
+    icon:'globe.svg',
+    status: 'Research',
+    link: 'https://github.com/Dwukn/athena'
   },
-  {
-    id: 6,
-    title: 'Portfolio',
-    description: 'A manga-styled portfolio',
-    tech: ['Tailwind', 'Next.js'],
-    color: 'from-purple-600 via-pink-600 to-red-500',
-    icon: '🎨',
-    status: 'Coming Soon',
-    link: 'https://github.com/skfareeduddin'
-  },
+//   {
+//     id: 6,
+//     title: 'KlipB',
+//     description: 'A simple clipboard manager for Linux',
+//     tech: ['C++', 'Wayland'],
+//     color: 'from-gray-700 via-gray-500 to-gray-400',
+//     icon: '📋',
+//     status: 'Live',
+//     link: "https://github.com/Dwukn/KlipB"
+//   }
 ];
-
 
 const Work = () => {
   const [inView, setInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.disconnect(); // Trigger only once
+          observer.disconnect();
         }
       },
       { threshold: 0.2 }
@@ -94,30 +96,26 @@ const Work = () => {
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-          <div className="text-center m-6">
-    <h2 className="text-4xl font-hand bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-      FEATURED PROJECTS
-    </h2>
-    {/* <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
-    <p className="text-slate-300 text-sm max-w-sm mx-auto leading-relaxed">
-      Innovative solutions pushing the boundaries of technology
-    </p> */}
-  </div>
-      <div className="relative z-20">
+      <div className="text-center m-6">
+        <h2 className="text-4xl font-hand bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          FEATURED PROJECTS
+        </h2>
+      </div>
 
+      <div className="relative">
         {/* DESKTOP */}
-        <div className="hidden md:block w-full h-screen">
-
+        <div className="hidden md:block w-full h-screen [transform-style:preserve-3d]">
+          {/* Rotating Cards Container */}
           <div
-            className="absolute w-[200px] h-[300px] top-[10%] left-1/2 -translate-x-1/2 animate-rotate3d z-30 [transform-style:preserve-3d] [transform:perspective(1000px)]"
+            className="absolute w-[280px] h-[200px] top-[15%] left-1/2 -translate-x-1/2 animate-rotate3d [transform-style:preserve-3d] [transform:perspective(1000px)]"
             style={{ '--quantity': String(cards.length) } as React.CSSProperties}
           >
             {cards.map((card, index) => (
               <div
                 key={index}
-                className="absolute w-full h-full"
+                className="absolute w-full h-full [transform-style:preserve-3d]"
                 style={{
-                  transform: `rotateY(${(360 / cards.length) * index}deg) translateZ(500px)`,
+                  transform: `rotateY(${(360 / cards.length) * index}deg) translateZ(400px)`,
                 }}
               >
                 <MysticalCard project={card} />
@@ -125,12 +123,15 @@ const Work = () => {
             ))}
           </div>
 
-          {/* Statue */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[1400px] px-4 pb-24 flex flex-wrap justify-between items-center z-20">
+          {/* Statue - positioned in 3D space behind the cards */}
+          <div
+            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[1400px] px-4 pb-24 flex flex-wrap justify-between items-center"
+            style={{ transform: 'translateZ(-200px)' }}
+          >
             <div className="relative w-full h-[75vh]">
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[30%] h-10 bg-white/10 opacity-30 rounded-full blur-md z-0" />
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[30%] h-10 bg-white/10 opacity-30 rounded-full blur-md" />
               <div
-                className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-top bg-contain z-10"
+                className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-top bg-contain"
                 style={{ backgroundImage: "url('/Images/Athena-Statue.png')" }}
               />
             </div>
@@ -138,29 +139,23 @@ const Work = () => {
         </div>
 
         {/* MOBILE */}
-        <div>
+        <div className="md:hidden">
 {/* <MobileProjectsSection projects={cards} /> */}
-<div
-  className="relative w-full overflow-hidden whitespace-nowrap z-30 md:hidden flex justify-center items-center bg-opacity-95"
->
-  <div className="inline-flex animate-marquee space-x-4 min-w-max">
-    {/* Duplicate the card list twice to allow infinite scroll */}
-    {[...cards, ...cards].map((card, index) => (
-      <div
-        key={index}
-        className="w-[200px] h-[450px] flex-shrink-0"
-      >
-        <MysticalCard project={card} />
+          <div className="relative w-full overflow-hidden whitespace-nowrap flex justify-center items-center bg-opacity-95">
+            <div className="inline-flex animate-marquee space-x-6 min-w-max py-8">
+              {/* Duplicate the card list twice to allow infinite scroll */}
+              {[...cards, ...cards].map((card, index) => (
+                <div
+                  key={index}
+                  className="w-[280px] h-[320px] flex-shrink-0"
+                >
+                  <MysticalCard project={card} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-
-       </div>
-
-      </div>
-            {/* <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70"></div> */}
-
     </div>
   );
 };

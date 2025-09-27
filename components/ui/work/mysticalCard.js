@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const MysticalCard = ({ project }) => {
   const { title, description, tech, color, icon, status } = project;
@@ -22,7 +23,7 @@ const MysticalCard = ({ project }) => {
       className="
         group relative block
         w-full max-w-[90vw] sm:max-w-xs md:max-w-sm
-        h-[140px] sm:h-[350px]  md:h-[180px] lg:h-[300px]
+        h-[140px] sm:h-[350px]  md:h-[180px] lg:h-[250px]
         p-4 sm:p-5 rounded-2xl shadow-2xl overflow-hidden
         transition-all duration-500 cursor-pointer text-white
         focus:outline-none focus:ring-2 focus:ring-blue-400/50
@@ -90,10 +91,14 @@ const MysticalCard = ({ project }) => {
       {/* Divine Wisdom Symbol replaced by project icon */}
       <motion.div
         className="absolute top-3 left-3 text-white text-xl pointer-events-none select-none"
-        animate={{ rotate: [0, 360] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        // animate={{ rotate: [0, 360] }}
+        // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       >
-        {icon}
+       {icon ? (
+  <Image src={icon} alt="Description of the image" width={20} height={20} />
+) : null}
+
+{/* <Image src={icon} alt="Description of the image" width={20} height={20}/> */}
       </motion.div>
 
       {/* Content */}

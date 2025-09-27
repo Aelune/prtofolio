@@ -15,14 +15,14 @@ export default function Hero() {
   });
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
       // Animate from 0.5 to 0.15 based on scroll
-  const intensityMotion = useTransform(scrollYProgress, [0, 1], [0.5, 0.15]);
+  const intensityMotion = useTransform(scrollYProgress, [0, 1], [0.3, 0.15]);
   const [baseIntensity, setBaseIntensity] = useState(0.5);
 
   useMotionValueEvent(intensityMotion, 'change', (latest) => {
     setBaseIntensity(latest);
   });
 
-  const hoverIntensity = 0.2;
+  const hoverIntensity = 0.1;
   const enableHover = true;
   return (
     <div>
@@ -32,7 +32,7 @@ export default function Hero() {
       className="w-full h-screen bg-[url('/Images/herobg-hd.webp')] bg-cover bg-center"
     >
     {/* <div className="w-full h-screen bg-[url('/Images/herobg-hd.webp')] bg-cover bg-center"> */}
-    <div className="w-full h-screen bg-[url('/Images/clouds.jpg')] bg-cover bg-center">
+    {/* <div className="w-full h-screen bg-[url('/Images/clouds.jpg')] bg-cover bg-center"> */}
       <div className="flex flex-col md:flex-row items-center justify-center h-full text-center md:text-left max-w-7xl mx-auto gap-10 md:gap-20 px-4">
         {/* Left Side: Title */}
 
@@ -79,21 +79,29 @@ export default function Hero() {
               I love minimal and brutalist design, also chocolates and arts are &gt;&gt;
             </motion.p>
             <div className="flex justify-center md:justify-start">
-              <motion.button
-                className="text-white font-roboto rounded-full px-6 py-3 border-2 border-white shadow-lg hover:bg-white/10 hover:scale-110 hover:rotate-[-1deg] hover:border-yellow-300 hover:shadow-[4px_4px_0_rgba(255,255,0,0.6)] transition-all duration-300 ease-out"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.8, type: 'spring', stiffness: 400, damping: 17 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact ME
-              </motion.button>
+<motion.button
+  className="text-white font-roboto rounded-full px-6 py-3 border-2 border-white shadow-lg hover:bg-white/10 hover:scale-110 hover:rotate-[-1deg] hover:border-yellow-300 hover:shadow-[4px_4px_0_rgba(255,255,0,0.6)] transition-all duration-300 ease-out"
+  initial={{ scale: 0, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  transition={{ delay: 0.8, type: 'spring', stiffness: 400, damping: 17 }}
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => {
+    const section = document.getElementById('contact');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }}
+>
+  Contact ME
+</motion.button>
+
+
             </div>
           </motion.div>
         </div>
       </div>
-    </div>
+    {/* </div> */}
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#caa56e]/40 to-transparent opacity-60 sm:h-1 sm:via-[#caa56e]/50 sm:opacity-70">hi</div>
     </motion.div>
 

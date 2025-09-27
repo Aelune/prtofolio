@@ -1,19 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { MouseEvent , useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
   { label: 'Projects', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
 //   { label: 'Experience', href: '#experience' },
 //   { label: 'Blogs', href: '#blogs' },
 //   { label: 'Videos', href: '#videos' },
 ];
 
+const handleSmoothScroll = (e: MouseEvent<HTMLAnchorElement>, href:string) => {
+  e.preventDefault();
+
+  const targetElement = document.getElementById(href.slice(1)); // Get the element by ID (remove '#' from href)
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,15 +41,20 @@ export default function Navbar() {
           </button>
         </div>
 
-        <ul className="hidden md:flex space-x-6 text-white text-lg font-medium tracking-wider">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} className="hover:text-white/20 transition">
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+<ul className="hidden md:flex space-x-6 text-white text-lg font-medium tracking-wider">
+      {navItems.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="hover:text-white/20 transition"
+            onClick={(e) => handleSmoothScroll(e, item.href)}
+          >
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+
       </div>
 
       {/* Mobile Menu */}

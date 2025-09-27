@@ -24,7 +24,7 @@ const Background = () => {
         y: Math.random() * 100,
         size: Math.random() * 4 + 2,
         speed: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.4 + 0.6, // Increased minimum opacity
+        opacity: Math.random() * 0.4,
       }));
       setParticles(newParticles);
     };
@@ -45,8 +45,8 @@ const Background = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full overflow-hidden"
-      style={{ backgroundColor: '#000' }} // Ensure black background
+      className="relative w-full h-full overflow-hidden "
+      style={{ backgroundColor: '#000' }}
     >
       {/* Secondary enhanced glow */}
       <div
@@ -59,8 +59,8 @@ const Background = () => {
           height: '200px',
     background: 'radial-gradient(circle, rgba(160,160,160,0.3) 0%, rgba(160,160,160,0.1) 40%, transparent 70%)',
           borderRadius: '50%',
-          filter: 'blur(50px)',
-          opacity: 0.9,
+          filter: 'blur(10px)',
+          opacity: 0.4,
         }}
       />
 
@@ -120,7 +120,7 @@ const Background = () => {
       {/* Grid overlay */}
       {/* Silvery grid overlay */}
 <div
-  className="absolute inset-0 z-10 opacity-10"
+  className="absolute inset-0 z-10 opacity-2"
   style={{
     backgroundImage: `
       linear-gradient(rgba(192,192,192,0.7) 2px, transparent 1px),

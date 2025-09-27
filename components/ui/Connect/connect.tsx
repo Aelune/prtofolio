@@ -5,47 +5,47 @@ import { MdEmail } from "react-icons/md";
 import { motion, useInView } from 'framer-motion';
 
 const Contact = () => {
-  const [activeCard, setActiveCard] = useState(null);
+  const [activeCard, setActiveCard] = useState<string | null>(null);
   const containerRef = useRef(null);
-  const inView = useInView(containerRef, { once: true, threshold: 0.2 });
+  const inView = useInView(containerRef, { once: true});
 
   const contactLinks = [
     {
       id: 'github',
       icon: FaGithub,
-      label: 'dwukn',
-      href: 'https://github.com/dwukn',
+      label: 'Aelune',
+      href: 'https://github.com/Aelune',
       color: 'from-gray-600 to-gray-800',
       hoverColor: 'from-gray-500 to-gray-700',
-      description: 'Code Repository'
+      description: 'Github'
     },
     {
       id: 'linkedin',
       icon: FaLinkedin,
-      label: 'dwukn',
-      href: 'https://linkedin.com/in/dwukn',
+      label: 'Aelune',
+      href: 'https://linkedin.com/in/Aelune',
       color: 'from-blue-600 to-blue-800',
       hoverColor: 'from-blue-500 to-blue-700',
-      description: 'Professional Network'
+      description: 'Linkedin'
     },
     {
       id: 'email',
       icon: MdEmail,
-      label: 'dawood220a@gmail.com',
-      href: 'mailto:dawood220a@gmail.com',
+      label: 'Ailune@proton.me',
+      href: 'mailto:Ailune@proton.me',
       color: 'from-green-600 to-green-800',
       hoverColor: 'from-green-500 to-green-700',
       description: 'Direct Message'
     },
-    {
-      id: 'youtube',
-      icon: FaYoutube,
-      label: 'blunebear',
-      href: 'https://youtube.com/@blunebear',
-      color: 'from-red-500 to-red-700',
-      hoverColor: 'from-red-400 to-red-600',
-      description: 'Video Content'
-    }
+    // {
+    //   id: 'youtube',
+    //   icon: FaYoutube,
+    //   label: 'blunebear',
+    //   href: 'https://youtube.com/@blunebear',
+    //   color: 'from-red-500 to-red-700',
+    //   hoverColor: 'from-red-400 to-red-600',
+    //   description: 'Video Content'
+    // }
   ];
 
   return (
@@ -79,7 +79,7 @@ const Contact = () => {
 
         {/* Cards */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl px-4 mb-10"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl px-4 mb-10"
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={{
