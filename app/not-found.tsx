@@ -31,8 +31,8 @@ export default function NotFound() {
 
         {/* Description */}
         <p className="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed">
-          The page you're looking for doesn't exist or has been moved.
-          Let's get you back on track.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          Let&apos;s get you back on track.
         </p>
 
         {/* Action Buttons */}

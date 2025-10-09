@@ -1,10 +1,13 @@
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 
 interface WelcomeAnimationProps {
   welcomeDone: boolean;
   setWelcomeDone: (done: boolean) => void;
+}
+interface ParticleProps {
+  delay?: number;  // `delay` is optional, but  can make it required if needed
 }
 const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ welcomeDone, setWelcomeDone }) => {    const
     [currentStage, setCurrentStage] = useState(0);
@@ -30,9 +33,8 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ welcomeDone, setWel
       };
     }
   }, [welcomeDone, setWelcomeDone]);
-
   // Particle component
-  const Particle = ({ delay = 0 }) => (
+  const Particle: React.FC<ParticleProps> = ({ delay = 0 }) => (
     <motion.div
       className="absolute w-1 h-1 bg-blue-400 rounded-full"
       initial={{ scale: 0, x: 0, y: 0, opacity: 0 }}

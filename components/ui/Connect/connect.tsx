@@ -1,97 +1,131 @@
 'use client';
-import React, { useState, useRef } from 'react';
-import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+// import { Mail, Linkedin, Github, Twitter, MessageCircle, Globe } from 'lucide-react';
 
-const Contact = () => {
-  const [activeCard, setActiveCard] = useState<string | null>(null);
+const ContactSection = () => {
+  const [activeCard, setActiveCard] = useState(null);
   const containerRef = useRef(null);
-  const inView = useInView(containerRef, { once: true});
-
+  const inView = useInView(containerRef, { once: true, amount: 0.2 });
   const contactLinks = [
     {
       id: 'github',
       icon: FaGithub,
-      label: 'Aelune',
-      href: 'https://github.com/Aelune',
+     href: 'https://github.com/Aelune',
       color: 'from-gray-600 to-gray-800',
       hoverColor: 'from-gray-500 to-gray-700',
-      description: 'Github'
+      description: 'Github',
+      accent: '#6b7280'
     },
     {
       id: 'linkedin',
       icon: FaLinkedin,
-      label: 'Aelune',
       href: 'https://linkedin.com/in/Aelune',
       color: 'from-blue-600 to-blue-800',
       hoverColor: 'from-blue-500 to-blue-700',
-      description: 'Linkedin'
+      description: 'Linkedin',
+      accent: '#3b82f6'
     },
     {
       id: 'email',
       icon: MdEmail,
-      label: 'Ailune@proton.me',
       href: 'mailto:Ailune@proton.me',
       color: 'from-green-600 to-green-800',
       hoverColor: 'from-green-500 to-green-700',
-      description: 'Direct Message'
-    },
-    // {
-    //   id: 'youtube',
-    //   icon: FaYoutube,
-    //   label: 'blunebear',
-    //   href: 'https://youtube.com/@blunebear',
-    //   color: 'from-red-500 to-red-700',
-    //   hoverColor: 'from-red-400 to-red-600',
-    //   description: 'Video Content'
-    // }
+      description: 'Direct Message',
+      accent: '#10b981'
+    }
   ];
 
   return (
-    <section
+    <div
       ref={containerRef}
-      className="relative w-full max-h-screen flex flex-col justify-center items-center text-white px-4 py-12 sm:px-6 md:px-12 lg:px-16 overflow-y-auto"
+      className="relative w-full min-h-screen flex flex-col justify-center items-center text-white px-4 py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
     >
-      <div className="relative z-20 w-full max-w-[120rem] flex flex-col items-center">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px]  rounded-full blur-3xl" />
+      </div>
 
-        {/* Header */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col items-center">
+        {/* Enhanced Header */}
         <motion.div
-          className="text-center mb-10 md:mb-14 px-2"
+          className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24 px-2 relative"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-inukit mb-4 tracking-wide leading-tight">
-            <span className="bg-gradient-to-r from-[#caa56e] via-yellow-400 to-[#caa56e] bg-clip-text text-transparent animate-pulse">
+          {/* Header Background Glow */}
+          <div className="absolute -inset-8 bg-gradient-to-b from-white/5 via-transparent to-white/5 rounded-3xl blur-2xl" />
+
+          <motion.h2
+            className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.span
+              className="block bg-gradient-to-r from-rose-400 via-amber-300 to-blue-400 bg-clip-text text-transparent font-inukit"
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{ backgroundSize: "200% 200%" }}
+            >
               Let&apos;s
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-white via-[#caa56e] to-white bg-clip-text text-transparent">
+            </motion.span>
+            <motion.span
+              className="block bg-gradient-to-r from-white via-amber-200 to-white font-roboto bg-clip-text text-transparent mt-2"
+              initial={{ opacity: 0, x: -50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
               Connect
-            </span>
-          </h2>
-          <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-[#caa56e] to-transparent mx-auto mb-6 sm:mb-8 rounded-full shadow-lg shadow-[#caa56e]/50" />
-          <p className="text-base font-WDXL sm:text-lg md:text-lg text-gray-300 max-w-xl mx-auto leading-relaxed">
-            Ready to collaborate on something <span className="text-[#caa56e] font-semibold">extraordinary</span>? Let&apos;s build the future together.
-          </p>
+            </motion.span>
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-8"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            Choose your preferred way to reach out
+          </motion.p>
+
+          {/* Animated Divider */}
+          <motion.div
+            className="flex items-center justify-center"
+            initial={{ width: 0, opacity: 0 }}
+            animate={inView ? { width: "auto", opacity: 1 } : {}}
+            transition={{ delay: 0.6, duration: 1 }}
+          >
+            <div className="h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent w-24 sm:w-32 md:w-40" />
+            <motion.div
+              className="mx-3 sm:mx-4 text-amber-400 text-xl sm:text-2xl"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            >
+              ✦
+            </motion.div>
+            <div className="h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent w-24 sm:w-32 md:w-40" />
+          </motion.div>
         </motion.div>
 
-        {/* Cards */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl px-4 mb-10"
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-        >
-          {contactLinks.map((contact) => {
+        {/* Contact Cards Grid */}
+        <div className="min-w-[600px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4">
+          {contactLinks.map((contact, index) => {
             const IconComponent = contact.icon;
+            const isActive = activeCard === contact.id;
+
             return (
               <motion.a
                 key={contact.id}
@@ -100,75 +134,163 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setActiveCard(contact.id)}
                 onMouseLeave={() => setActiveCard(null)}
-                className="group relative"
-                variants={{
-                  hidden: { opacity: 0, y: 40 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="group relative block"
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                whileHover={{ scale: 1.05, y: -8 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="relative p-6 sm:p-8 rounded-2xl transition-all duration-500 transform group-hover:scale-105 group-hover:-translate-y-2">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${activeCard === contact.id ? contact.hoverColor : contact.color} rounded-2xl opacity-20 group-hover:opacity-40 transition-all duration-500`} />
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-md rounded-2xl border border-[#caa56e]/20 group-hover:border-[#caa56e]/50 transition-all duration-500" />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500`} />
+                {/* Card Container */}
+                <div className="relative p-6 sm:p-7 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-500 h-full min-h-[180px] sm:min-h-[200px]">
+                  {/* Background Layers */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-2xl md:rounded-3xl backdrop-blur-xl border border-white/10 group-hover:border-white/30 transition-all duration-500" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-20 transition-all duration-500`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl md:rounded-3xl" />
 
-                  <div className="relative z-10 flex items-center gap-4 sm:gap-6">
+                  {/* Grid Pattern Overlay */}
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 rounded-2xl md:rounded-3xl overflow-hidden transition-opacity duration-500">
+                    <div
+                      className="w-full h-full"
+                      style={{
+                        backgroundImage: `
+                          linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '20px 20px'
+                      }}
+                    />
+                  </div>
+
+                  {/* Animated Glow Effect */}
+                  <div
+                    className={`absolute -inset-1 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-40 blur-2xl transition-all duration-700`}
+                    style={{
+                      background: `linear-gradient(135deg, ${contact.accent}60, ${contact.accent}30)`,
+                    }}
+                  />
+
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-col items-center text-center space-y-4 md:space-y-5">
+                    {/* Icon Container */}
                     <div className="relative">
-                      <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent className="text-xl sm:text-2xl text-white" />
-                      </div>
-                      <div className={`absolute inset-0 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${contact.color} opacity-0 group-hover:opacity-50 blur-lg transition-all duration-500`} />
+                      <motion.div
+                        className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br ${contact.color} flex items-center justify-center shadow-2xl transition-all duration-500`}
+                        whileHover={{ rotate: 12, scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-white" />
+                      </motion.div>
+
+                      {/* Icon Glow */}
+                      <div className={`absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br ${contact.color} opacity-0 group-hover:opacity-60 blur-xl transition-all duration-500`} />
+
+                      {/* Floating Particles */}
+                      {[...Array(4)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/50 rounded-full"
+                          style={{
+                            top: i === 0 ? '-10px' : i === 1 ? '50%' : i === 2 ? 'calc(100% + 10px)' : '50%',
+                            left: i === 1 ? '-10px' : i === 3 ? 'calc(100% + 10px)' : '50%',
+                            transform: 'translate(-50%, -50%)',
+                          }}
+                          animate={isActive ? {
+                            scale: [1, 1.5, 1],
+                            opacity: [0.5, 1, 0.5],
+                          } : {}}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.2
+                          }}
+                        />
+                      ))}
                     </div>
 
-                    <div className="flex-1">
-                      <h3 className="text-sm sm:text-base font-semibold font-gloock text-[#caa56e] mb-1 group-hover:text-yellow-400 transition-colors">
+                    {/* Text Content */}
+                    {/* <div className="space-y-1.5 sm:space-y-2">
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white group-hover:text-amber-300 transition-colors duration-300">
                         {contact.description}
                       </h3>
-                      <p className="text-sm sm:text-lg font-medium text-white font-roboto group-hover:text-gray-100 transition-colors break-all">
+                      <p className="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300 break-words px-2">
                         {contact.label}
                       </p>
-                    </div>
-
-                    {/* <div className="text-[#caa56e] group-hover:text-yellow-400 group-hover:translate-x-2 transition-all duration-300">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>f
                     </div> */}
+
+                    {/* Hover Arrow Indicator */}
+                    <motion.div
+                      className="opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      initial={{ y: 10 }}
+                      whileHover={{ y: 0 }}
+                    >
+                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-r ${contact.color} flex items-center justify-center shadow-lg`}>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                    </motion.div>
                   </div>
+
+                  {/* Corner Accents */}
+                  {['top-2 left-2', 'top-2 right-2', 'bottom-2 left-2', 'bottom-2 right-2'].map((pos, idx) => (
+                    <motion.div
+                      key={idx}
+                      className={`absolute ${pos} w-2 h-2 border-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300`}
+                      style={{
+                        borderColor: contact.accent,
+                        transitionDelay: `${idx * 50}ms`
+                      }}
+                      animate={isActive ? {
+                        scale: [1, 1.3, 1],
+                      } : {}}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        delay: idx * 0.2
+                      }}
+                    />
+                  ))}
                 </div>
               </motion.a>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* CTA Button */}
-        {/* <motion.div
-          className="relative group mb-10"
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <button className="relative px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-[#caa56e] to-yellow-600 text-black font-bold text-base sm:text-xl rounded-full transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-[#caa56e]/50">
-            <span className="relative z-10">Start a Conversation</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-[#caa56e] rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
-          </button>
-          <div className="absolute inset-0 border-2 border-[#caa56e] rounded-full opacity-0 group-hover:opacity-100 animate-ping" />
-        </motion.div> */}
-          {/* Quote */}
+        {/* Call to Action */}
         <motion.div
-          className="text-center px-2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-12 sm:mt-16 md:mt-20 text-center px-4"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: 1.5, duration: 0.6 }}
         >
-          <p className="text-sm sm:text-base italic font-WDXL text-gray-400 max-w-xl mx-auto">
-            &quot;Great things are never done by one person.
-            <span className="text-[#caa56e]"> They&apos;re done by a team of people.</span>&quot;
+          <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-md mx-auto">
+            Available for collaborations and new opportunities
           </p>
+          <motion.div
+            className="mt-4 flex justify-center gap-2"
+            animate={{
+              y: [0, -8, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <span className="text-2xl">👋</span>
+          </motion.div>
         </motion.div>
       </div>
-    </section>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.05); }
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default Contact;
+export default ContactSection;

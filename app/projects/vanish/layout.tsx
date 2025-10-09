@@ -5,9 +5,9 @@ import {
   Inknut_Antiqua,
   Jacques_Francois,
   Just_Another_Hand,
-  Gloock
+  Gloock,
+  Cookie
 } from 'next/font/google';
-import "./globals.css";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -15,6 +15,11 @@ const roboto = Roboto({
   variable: '--font-roboto'
 });
 
+const cookie = Cookie({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-cookie'
+});
 const inknut = Inknut_Antiqua({
   subsets: ['latin'],
   weight: ['400'],
@@ -164,7 +169,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${roboto.variable} ${inknut.variable} ${jacques.variable} ${hand.variable} ${gloock.variable} antialiased`}
+        className={`${cookie.variable} ${roboto.variable} ${inknut.variable} ${jacques.variable} ${hand.variable} ${gloock.variable} antialiased`}
       >
         {children}
       </body>

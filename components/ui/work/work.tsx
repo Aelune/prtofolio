@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { easeInOut, motion } from 'framer-motion';
 import MysticalCard from './mysticalCard';
-// import MobileProjectsSection from './comicCArd';
 
 const cards = [
   {
@@ -9,10 +9,9 @@ const cards = [
     description: 'Modern alternative to rm, with customizable TUI and restore feature',
     tech: ['GoLang', 'TUI'],
     color: 'from-red-700 via-rose-600 to-pink-500',
-    // icon: '🗑️',
     icon:'globe.svg',
     status: 'Live',
-    link: 'https://github.com/Aelune/vanish'
+    link: '/projects/vanish'
   },
   {
     id: 2,
@@ -20,10 +19,9 @@ const cards = [
     description: 'Browser extension to change tab UI and have customizable quicklinks',
     tech: ['JavaScript', 'WebExt'],
     color: 'from-orange-600 via-amber-500 to-yellow-400',
-    // icon: '🪐',
     icon:'globe.svg',
     status: 'Beta',
-    link: 'https://github.com/Dwukn/venus'
+    link: 'https://github.com/Aelune/venus'
   },
   {
     id: 3,
@@ -31,10 +29,9 @@ const cards = [
     description: 'Hyprland dotfiles and collection of apps to improve user experience',
     tech: ['Hyprland', 'Config'],
     color: 'from-purple-700 via-indigo-600 to-blue-500',
-    // icon: '🌙',
     icon:'globe.svg',
     status: 'Live',
-    link: 'https://github.com/Dwukn/hecate'
+    link: 'https://github.com/Aelune/hecate'
   },
   {
     id: 4,
@@ -42,10 +39,9 @@ const cards = [
     description: 'Template creation tool for multiple types of projects',
     tech: ['Rust', 'CLI'],
     color: 'from-green-600 via-emerald-500 to-teal-400',
-    // icon: '⚡',
     icon:'globe.svg',
     status: 'Beta',
-    link: 'https://github.com/Dwukn/janus'
+    link: 'https://github.com/Aelune/janus'
   },
   {
     id: 5,
@@ -53,26 +49,16 @@ const cards = [
     description: 'Custom Linux kernel build for fun and learning',
     tech: ['C', 'Kernel'],
     color: 'from-blue-700 via-cyan-600 to-indigo-500',
-    // icon: '⚔️',
     icon:'globe.svg',
     status: 'Research',
-    link: 'https://github.com/Dwukn/athena'
-  },
-//   {
-//     id: 6,
-//     title: 'KlipB',
-//     description: 'A simple clipboard manager for Linux',
-//     tech: ['C++', 'Wayland'],
-//     color: 'from-gray-700 via-gray-500 to-gray-400',
-//     icon: '📋',
-//     status: 'Live',
-//     link: "https://github.com/Dwukn/KlipB"
-//   }
+    link: 'https://github.com/Aelune/athena'
+  }
 ];
 
 const Work = () => {
   const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
+  const [activeCard, setActiveCard] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,71 +75,236 @@ const Work = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-rotate active card
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % cards.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: easeInOut,
+      },
+    },
+  };
+
   return (
     <div
       ref={sectionRef}
-      className={`relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen overflow-hidden text-center transition-all duration-1000 ease-out transform ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
+      className="relative w-full min-h-screen overflow-hidden bg-gradient-to-b from-black/50 via-transparent to-black/30 py-12 md:py-0"
     >
-      <div className="text-center m-6">
-        <h2 className="text-4xl font-hand bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-          FEATURED PROJECTS
-        </h2>
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-20 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-40 right-32 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl"
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 80, 0],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.4) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.4) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
-      <div className="relative">
-        {/* DESKTOP */}
-        <div className="hidden md:block w-full h-screen [transform-style:preserve-3d]">
-          {/* Rotating Cards Container */}
-          <div
-            className="absolute w-[280px] h-[200px] top-[15%] left-1/2 -translate-x-1/2 animate-rotate3d [transform-style:preserve-3d] [transform:perspective(1000px)]"
-            style={{ '--quantity': String(cards.length) } as React.CSSProperties}
+      {/* Header Section */}
+      <motion.div
+        className="text-center pt-12 md:pt-20 pb-8 md:pb-12 relative z-10 px-4"
+        variants={headerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+        <div className="inline-block relative">
+          <motion.h2
+            className="text-4xl md:text-6xl lg:text-7xl font-hand bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent relative"
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              backgroundSize: "200% 100%",
+            }}
           >
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className="absolute w-full h-full [transform-style:preserve-3d]"
-                style={{
-                  transform: `rotateY(${(360 / cards.length) * index}deg) translateZ(400px)`,
-                }}
-              >
-                <MysticalCard project={card} />
-              </div>
-            ))}
-          </div>
+            FEATURED PROJECTS
+          </motion.h2>
 
-          {/* Statue - positioned in 3D space behind the cards */}
-          <div
-            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[1400px] px-4 pb-24 flex flex-wrap justify-between items-center"
-            style={{ transform: 'translateZ(-200px)' }}
+          <motion.div
+            className="absolute -top-4 -left-4 w-3 h-3 bg-blue-400 rounded-full"
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+            }}
+          />
+          <motion.div
+            className="absolute -bottom-4 -right-4 w-2 h-2 bg-purple-400 rounded-full"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.4, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              delay: 1,
+            }}
+          />
+        </div>
+
+        <motion.p
+          className="text-gray-300 text-base md:text-lg mt-4 max-w-2xl mx-auto leading-relaxed px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          Crafting innovative solutions that push the boundaries of technology
+        </motion.p>
+      </motion.div>
+
+      <div className="relative">
+        {/* DESKTOP - 3D Carousel */}
+        <div className="hidden lg:block w-full h-screen [transform-style:preserve-3d] relative">
+          <motion.div
+            className="absolute w-[320px] h-[220px] top-[20%] left-1/2 -translate-x-1/2 [transform-style:preserve-3d]"
+            style={{ '--quantity': String(cards.length) } as React.CSSProperties}
+            animate={{ rotateY: 360 }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {cards.map((card, index) => {
+              const angle = (360 / cards.length) * index;
+              const normalizedAngle = ((angle % 360) + 360) % 360;
+              const isInFront = normalizedAngle <= 90 || normalizedAngle >= 270;
+              const zIndex = isInFront ? 35 : 15;
+              const baseTransform = `rotateY(${angle}deg) translateZ(450px)`;
+
+              return (
+                <motion.div
+                  key={index}
+                  className="absolute w-full h-full [transform-style:preserve-3d]"
+                  style={{
+                    transform: baseTransform,
+                    zIndex: zIndex,
+                  }}
+                  whileHover={{
+                    transform: `${baseTransform} scale(1.05)`,
+                    transition: { duration: 0.3 },
+                  }}
+                >
+                  <MysticalCard project={card} />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* Athena Statue */}
+          <motion.div
+            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[1400px] px-4 pb-24 flex flex-wrap justify-between items-center z-20"
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.8 }}
           >
             <div className="relative w-full h-[75vh]">
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[30%] h-10 bg-white/10 opacity-30 rounded-full blur-md" />
+              <motion.div
+                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[35%] h-12 bg-blue-500/10 opacity-40 rounded-full blur-xl"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
               <div
-                className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-top bg-contain"
+                className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-contain filter drop-shadow-2xl"
                 style={{ backgroundImage: "url('/Images/Athena-Statue.png')" }}
               />
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* MOBILE */}
-        <div className="md:hidden">
-{/* <MobileProjectsSection projects={cards} /> */}
-          <div className="relative w-full overflow-hidden whitespace-nowrap flex justify-center items-center bg-opacity-95">
-            <div className="inline-flex animate-marquee space-x-6 min-w-max py-8">
-              {/* Duplicate the card list twice to allow infinite scroll */}
-              {[...cards, ...cards].map((card, index) => (
-                <div
-                  key={index}
-                  className="w-[280px] h-[320px] flex-shrink-0"
-                >
-                  <MysticalCard project={card} />
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* TABLET - Grid View */}
+        <div className="hidden md:block lg:hidden px-6 py-8">
+          <motion.div
+            className="grid grid-cols-2 gap-6 max-w-4xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.5 }}
+          >
+            {cards.map((card, index) => (
+              <motion.div
+                key={index}
+                className="h-[320px]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.1 * index, duration: 0.6 }}
+              >
+                <MysticalCard project={card} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* MOBILE - Vertical Stack */}
+        <div className="md:hidden px-4 py-8 space-y-6">
+          {cards.map((card, index) => (
+            <motion.div
+              key={index}
+              className="h-[280px]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: 0.1 * index, duration: 0.6 }}
+            >
+              <MysticalCard project={card} />
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

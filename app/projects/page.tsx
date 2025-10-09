@@ -220,7 +220,7 @@ const ProjectsPage = () => {
   });
 
   const featuredProjects = filteredProjects.filter(project => project.featured);
-  const otherProjects = filteredProjects.filter(project => !project.featured);
+//   const otherProjects = filteredProjects.filter(project => !project.featured);
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
