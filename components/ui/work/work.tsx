@@ -57,7 +57,7 @@ const cards = [
 
 const Work = () => {
   const [inView, setInView] = useState(false);
-  const [activeCard, setActiveCard] = useState(0);
+  const [, setActiveCard] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 // import { Mail, Linkedin, Github, Twitter, MessageCircle, Globe } from 'lucide-react';
 
 const ContactSection = () => {
-  const [activeCard, setActiveCard] = useState(null);
+  const [activeCard, setActiveCard] = useState<string |null>(null);
   const containerRef = useRef(null);
   const inView = useInView(containerRef, { once: true, amount: 0.2 });
   const contactLinks = [
