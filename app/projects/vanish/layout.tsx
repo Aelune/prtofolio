@@ -43,117 +43,52 @@ const gloock = Gloock({
 });
 
 export const metadata: Metadata = {
-  title: "Dawood Khan - Full Stack Developer & Designer | DΛωσσd Portfolio",
-  description: "Full Stack Developer specializing in GoLang, JavaScript, and modern web technologies. Creator of Vanish, Venus, Hecate, and other open-source projects. Available for freelance work.",
-  icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.png',
-  },
+  title: "Vanish - Safe File Deletion Tool | Modern CLI by Aelune",
+  description: "Vanish (vx) is a modern, safe file deletion tool with recovery capabilities and beautiful TUI interface. Built with GoLang and Bubble Tea framework. 8 themes, pattern-based restoration, and comprehensive file management.",
   keywords: [
-    "Dawood Khan",
-    "Dwukn",
-    "Full Stack Developer",
-    "Frontend Developer",
-    "Rust Developer",
-    "JavaScript Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Web Developer",
-    "Software Engineer",
-    "Portfolio",
-    "Vanish CLI",
-    "Venus Browser Extension",
-    "Hecate Hyprland",
-    "Open Source",
-    "Linux Developer",
-    "System Programming"
+    "Vanish CLI", "safe file deletion", "file recovery tool", "rm alternative",
+    "trash CLI", "Go CLI tool", "Bubble Tea TUI", "file cache system"
   ],
-  authors: [{ name: "Dawood Khan" }],
-  creator: "Dawood Khan",
-  publisher: "Dawood Khan",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://dwukn.vercel.app',
-    title: "Dawood Khan - Full Stack Developer & Designer",
-    description: "Full Stack Developer specializing in Rust, JavaScript, and modern web technologies. Creator of open-source projects like Vanish, Venus, and Hecate.",
-    siteName: 'Dawood Khan Portfolio',
+    title: "Vanish - Modern Safe File Deletion Tool",
+    description: "Safe file deletion with recovery, beautiful TUI, and 8 themes. A modern alternative to rm.",
+    url: "https://dwukn.vercel.app/projects/vanish",
     images: [
       {
-        url: 'https://dwukn.vercel.app/og-image.jpg',
+        url: '/api/og?title=Vanish&subtitle=Safe%20File%20Deletion%20Tool&project=CLI%20Tool',
         width: 1200,
         height: 630,
-        alt: 'Dawood Khan - Full Stack Developer Portfolio',
       },
     ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Dawood Khan - Full Stack Developer & Designer",
-    description: "Full Stack Developer specializing in Rust, JavaScript, and modern web technologies. Creator of open-source projects.",
-    images: ['https://dwukn.vercel.app/og-image.jpg'],
-    creator: '@dwukn',
-  },
-  metadataBase: new URL('https://dwukn.vercel.app'),
   alternates: {
-    canonical: 'https://dwukn.vercel.app',
+    canonical: "https://dwukn.vercel.app/projects/vanish",
   },
-  category: 'technology',
-  classification: 'Portfolio',
-//   verification: {
-//     google: 'your-google-verification-code'
-//   },
-};
+}
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Dawood Khan',
-  alternateName: 'Dwukn',
-  url: 'https://dwukn.vercel.app',
-  image: 'https://dwukn.vercel.app/og-image.jpg',
-  jobTitle: 'Full Stack Developer',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Freelance / Open Source Projects'
+const vanishStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Vanish",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: ["Linux", "macOS", "Windows"],
+  description: "A modern, safe file deletion tool with recovery capabilities and beautiful TUI interface",
+  author: {
+    "@type": "Person",
+    name: "Dawood Khan",
+    alternateName: "Aelune"
   },
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'Lords Institute of Engineering and Technology'
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD"
   },
-  knowsAbout: [
-    'Go',
-    'JavaScript',
-    'React',
-    'Next.js',
-    'Linux',
-    'Web Development',
-    'System Programming'
-  ],
-  sameAs: [
-    'https://github.com/Dwukn',
-    'https://www.linkedin.com/in/dwukn',
-    'https://x.com/dwukn',
-    'https://leetcode.com/dwukn',
-    // add other profiles
-  ],
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://dwukn.vercel.app'
-  }
-};
+  url: "https://github.com/Aelune/vanish",
+  downloadUrl: "https://github.com/Aelune/vanish/releases",
+  softwareVersion: "0.9.0",
+  programmingLanguage: "Go",
+  screenshot: "https://dwukn.vercel.app/projects/vanish-screenshot.jpg"
+}
 
 export default function RootLayout({
   children,
@@ -164,9 +99,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vanishStructuredData) }}
+      />
       </head>
       <body
         className={`${cookie.variable} ${roboto.variable} ${inknut.variable} ${jacques.variable} ${hand.variable} ${gloock.variable} antialiased`}

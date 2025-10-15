@@ -38,35 +38,85 @@ const gloock = Gloock({
 });
 
 export const metadata: Metadata = {
-  title: "Dawood Khan - Full Stack Developer & Designer | DΛωσσd Portfolio",
-  description: "Full Stack Developer specializing in GoLang, JavaScript, and modern web technologies. Creator of Vanish, Venus, Hecate, and other open-source projects. Available for freelance work.",
+  title: "Dawood Khan (Aelune) - Full Stack Developer | GoLang, Python, Web Technologies & Linux Systems | Open Source Creator",
+  description: "Full Stack Developer & Open Source Creator specializing in GoLang, Python, and modern web technologies. Creator of Vanish (safe file deletion CLI), Hecate (Hyprland dotfiles), and Venus. Building system tools and beautiful TUI applications. Available for freelance work.",
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.ico',
     apple: '/favicon.png',
   },
   keywords: [
+    // Personal Branding
     "Dawood Khan",
+    "Aelune",
+    "Aelune developer",
     "Dwukn",
+    "Dawood Khan portfolio",
+
+    // Developer Skills
     "Full Stack Developer",
-    "Frontend Developer",
-    "Rust Developer",
+    "GoLang Developer",
+    // "Rust Developer",
     "JavaScript Developer",
+    "TypeScript Developer",
     "React Developer",
     "Next.js Developer",
-    "Web Developer",
-    "Software Engineer",
-    "Portfolio",
+    "Systems Programmer",
+    "CLI Developer",
+    "TUI Applications",
+
+    // Projects - Vanish
     "Vanish CLI",
-    "Venus Browser Extension",
+    "Vanish file deletion tool",
+    "safe file deletion",
+    "file recovery tool",
+    "rm alternative",
+    "trash CLI",
+    "file cache system",
+    "terminal file manager",
+    "Go CLI tool",
+
+    // Projects - Hecate
     "Hecate Hyprland",
-    "Open Source",
+    "Hyprland dotfiles",
+    "Hyprland configuration",
+    "Hyprland themes",
+    "dynamic theming Linux",
+    "Wayland rice",
+    "Linux desktop customization",
+    "Waybar themes",
+    "Hyprland setup",
+    "Linux dotfiles",
+
+    // Technologies
+    "Bubble Tea framework",
+    "Lip Gloss styling",
+    "Wallust integration",
+    "TOML configuration",
+    "Linux system tools",
+    "Wayland compositor",
+
+    // Skills & Services
+    "Open Source Developer",
     "Linux Developer",
-    "System Programming"
+    "System Programming",
+    "CLI Tools Developer",
+    "Terminal UI Developer",
+    "Freelance Developer",
+    "Software Engineer",
+    "Tech Content Creator",
+
+    // Location (if relevant)
+    "Hyderabad Developer",
+    "India Developer",
   ],
-  authors: [{ name: "Dawood Khan" }],
-  creator: "Dawood Khan",
+  authors: [
+    { name: "Dawood Khan", url: "https://dwukn.vercel.app" },
+    { name: "Aelune" }
+  ],
+  creator: "Dawood Khan (Aelune)",
   publisher: "Dawood Khan",
+
   robots: {
     index: true,
     follow: true,
@@ -78,38 +128,149 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://dwukn.vercel.app',
-    title: "Dawood Khan - Full Stack Developer & Designer",
-    description: "Full Stack Developer specializing in Rust, JavaScript, and modern web technologies. Creator of open-source projects like Vanish, Venus, and Hecate.",
-    siteName: 'Dawood Khan Portfolio',
+    title: "Dawood Khan (Aelune) - Full Stack Developer & Open Source Creator",
+    description: "Creator of Vanish (safe file deletion CLI with recovery), Hecate (dynamic Hyprland theming), and other open-source tools. Specializing in GoLang, Python, and beautiful applications.",
+    siteName: 'Dawood Khan - Aelune Portfolio',
+    // images: [
+    //   {
+    //     url: 'https://dwukn.vercel.app/og-image.jpg',
+    //     width: 1200,
+    //     height: 630,
+    //     alt: 'Dawood Khan Portfolio - Creator of Vanish CLI and Hecate Hyprland',
+    //   },
     images: [
       {
-        url: 'https://dwukn.vercel.app/og-image.jpg',
+        url: '/api/og?title=Dawood%20Khan&subtitle=Full%20Stack%20Developer',
         width: 1200,
         height: 630,
-        alt: 'Dawood Khan - Full Stack Developer Portfolio',
       },
     ],
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: "Dawood Khan - Full Stack Developer & Designer",
-    description: "Full Stack Developer specializing in Rust, JavaScript, and modern web technologies. Creator of open-source projects.",
+    title: "Dawood Khan (Aelune) - Full Stack Developer",
+    description: "Open Source Creator | Vanish CLI • Hecate Hyprland • Venus | GoLang & Web Developer | Building beautiful terminal applications",
     images: ['https://dwukn.vercel.app/og-image.jpg'],
     creator: '@dwukn',
   },
+
   metadataBase: new URL('https://dwukn.vercel.app'),
+
   alternates: {
     canonical: 'https://dwukn.vercel.app',
   },
+
   category: 'technology',
-  classification: 'Portfolio',
-//   verification: {
-//     google: 'your-google-verification-code'
-//   },
+  classification: 'Developer Portfolio',
+
+  // Additional JSON-LD structured data for better SEO
+  other: {
+    'application-name': 'Dawood Khan Portfolio',
+    'msapplication-TileColor': '#1a1b26',
+    'theme-color': '#1a1b26',
+  },
+
+  // verification: {
+  //   google: 'your-google-search-console-verification-code',
+  //   yandex: 'your-yandex-verification-code',
+  // },
+};
+
+// const structuredData = {
+//   "@context": "https://schema.org",
+//   "@type": "Person",
+//   name: "Dawood Khan",
+//   alternateName: "Aelune",
+//   url: "https://dwukn.vercel.app",
+//   image: "https://dwukn.vercel.app/og-image.jpg",
+//   jobTitle: "Full Stack Developer",
+//   description: "Full Stack Developer and Open Source Creator specializing in GoLang, Rust, and system programming",
+//   sameAs: [
+//     "https://github.com/Aelune",
+//     "https://linkedin.com/in/dawood-khan",
+//     "https://youtube.com/@Aelune",
+//     "https://twitter.com/dwukn"
+//   ],
+//   knowsAbout: [
+//     "GoLang", "Rust", "JavaScript", "TypeScript", "React", "Next.js",
+//     "Linux", "Hyprland", "CLI Development", "System Programming"
+//   ],
+//   workExample: [
+//     {
+//       "@type": "SoftwareApplication",
+//       name: "Vanish",
+//       description: "A modern, safe file deletion tool with recovery capabilities",
+//       url: "https://github.com/Aelune/vanish",
+//       applicationCategory: "DeveloperApplication",
+//       operatingSystem: "Linux, macOS, Windows",
+//     },
+//     {
+//       "@type": "SoftwareSourceCode",
+//       name: "Hecate",
+//       description: "Dynamic Hyprland dotfiles with intelligent theming",
+//       codeRepository: "https://github.com/Aelune/Hecate",
+//       programmingLanguage: "Shell",
+//     }
+//   ]
+// }
+
+// Vanish Project Page Metadata
+export const vanishMetadata: Metadata = {
+  title: "Vanish - Safe File Deletion Tool with Recovery | Modern CLI by Aelune",
+  description: "Vanish (vx) is a modern, safe file deletion tool with recovery capabilities and beautiful TUI interface. Never lose important files again with pattern-based restoration, 8 themes, and comprehensive file management. Built with GoLang and Bubble Tea.",
+  keywords: [
+    "Vanish CLI",
+    "safe file deletion",
+    "file recovery tool",
+    "rm alternative",
+    "trash CLI",
+    "terminal file manager",
+    "Go CLI tool",
+    "Bubble Tea TUI",
+    "file cache system",
+    "Linux file deletion",
+    "pattern matching restore",
+    "vx command",
+    "recycle bin CLI"
+  ],
+  openGraph: {
+    title: "Vanish - Modern Safe File Deletion Tool",
+    description: "Safe file deletion with recovery, beautiful TUI, 8 themes, and pattern-based restoration. A modern alternative to rm.",
+    images: ['/vanish-og.jpg'],
+  },
+};
+
+// Hecate Project Page Metadata
+export const hecateMetadata: Metadata = {
+  title: "Hecate - Dynamic Hyprland Dotfiles with Automatic Theming | Linux Rice",
+  description: "Hecate provides beautiful Hyprland dotfiles with dynamic theming that automatically extracts colors from your wallpaper. Supports multiple terminals (Alacritty, Kitty, Foot, Ghostty) and shells (Bash, Zsh, Fish). Complete Waybar, Rofi, and SwayNC configuration included.",
+  keywords: [
+    "Hecate Hyprland",
+    "Hyprland dotfiles",
+    "Hyprland themes",
+    "dynamic theming Linux",
+    "Wayland rice",
+    "Linux desktop customization",
+    "Waybar configuration",
+    "Hyprland setup",
+    "Wallust integration",
+    "Linux ricing",
+    "Wayland compositor themes",
+    "Hyprland waybar",
+    "automatic color theming",
+    "Linux aesthetic"
+  ],
+  openGraph: {
+    title: "Hecate - Dynamic Hyprland Dotfiles",
+    description: "Transform your Hyprland desktop with automatic wallpaper-based theming. Beautiful, intelligent, and easy to install.",
+    images: ['/hecate-og.jpg'],
+  },
 };
 
 const jsonLd = {
@@ -162,6 +323,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+              {/* <link rel="canonical" href="https://dwukn.vercel.app" /> */}
       </head>
       <body
         className={`${roboto.variable} ${inknut.variable} ${jacques.variable} ${hand.variable} ${gloock.variable} antialiased`}
